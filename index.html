@@ -1,0 +1,235 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>La Terracita | Desayunos</title>
+    <link rel="stylesheet" href="style.css">
+    <!-- Fuentes de Google -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Pacifico&family=Poppins:wght@300;400;600&display=swap" rel="stylesheet">
+    <!-- Iconos de FontAwesome -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+</head>
+<body>
+
+    <!-- Menú de Navegación -->
+    <nav class="navbar">
+        <div class="logo">
+            <span class="neon-text">La Terracita</span>
+        </div>
+        <ul class="nav-links" id="nav-links">
+            <li><a href="#inicio">Inicio</a></li>
+            <li><a href="#nosotros">Conócenos</a></li>
+            <li><a href="#menu">Menú</a></li>
+            <li><a href="#galeria">Instalaciones</a></li>
+            <li><a href="#contacto">Contacto</a></li>
+        </ul>
+        <div class="burger" id="burger">
+            <div class="line1"></div>
+            <div class="line2"></div>
+            <div class="line3"></div>
+        </div>
+    </nav>
+
+    <!-- Sección Principal (Hero) -->
+    <header id="inicio" class="hero">
+        <div class="hero-content fade-in">
+            <h1>Desayunos hechos con el corazón</h1>
+            <p>Disfruta de una mañana perfecta en nuestro espacio rodeado de naturaleza.</p>
+            <a href="#menu" class="btn">Ver nuestro menú</a>
+        </div>
+    </header>
+
+    <!-- Sección Nosotros -->
+    <section id="nosotros" class="about">
+        <div class="about-text fade-in">
+            <h2>Bienvenidos a nuestro rincón</h2>
+            <p>En La Terracita, combinamos el sabor de unos desayunos deliciosos con un ambiente relajante. Nuestras paredes de ladrillo, el techo de teja y nuestras áreas verdes con palmeras están diseñadas para que te desconectes de la rutina y disfrutes del momento.</p>
+        </div>
+        <div class="about-image fade-in">
+            <img src="documentos/ImgTerracita.jpeg" alt="Letrero de La Terracita">
+        </div>
+    </section>
+
+    <!-- Nueva Sección del Menú -->
+    <section id="menu" class="menu-section">
+        <div class="menu-container fade-in">
+            <h2>Nuestro Menú</h2>
+            <p class="menu-nota"><i class="fas fa-mug-hot"></i> Todos nuestros platillos vienen con café de olla o agua incluidos.</p>
+            
+            <div class="menu-grid">
+                <!-- Categoría: Desayunos -->
+                <div class="menu-category fade-in">
+                    <h3>Desayunos</h3>
+                    
+                    <div class="menu-item">
+                        <div class="menu-item-header">
+                            <h4>Chilaquiles con frijoles</h4>
+                            <span class="price">$119</span>
+                        </div>
+                    </div>
+                    
+                    <div class="menu-item">
+                        <div class="menu-item-header">
+                            <h4>Huevos al gusto con frijoles</h4>
+                            <span class="price">$119</span>
+                        </div>
+                        <p class="menu-desc">Divorciados, a la mexicana, omelet, rancheros.</p>
+                    </div>
+
+                    <div class="menu-item">
+                        <div class="menu-item-header">
+                            <h4>Club Sándwich</h4>
+                            <span class="price">$119</span>
+                        </div>
+                    </div>
+
+                    <div class="menu-item">
+                        <div class="menu-item-header">
+                            <h4>Waffles</h4>
+                            <span class="price">$119</span>
+                        </div>
+                        <p class="menu-desc">Con frutos rojos, fresas, plátano y un endulzante.</p>
+                    </div>
+
+                    <div class="menu-item">
+                        <div class="menu-item-header">
+                            <h4>Enchiladas Suizas</h4>
+                            <span class="price">$119</span>
+                        </div>
+                    </div>
+
+                    <div class="menu-item">
+                        <div class="menu-item-header">
+                            <h4>Enmoladas</h4>
+                            <span class="price">$119</span>
+                        </div>
+                    </div>
+
+                    <div class="menu-item">
+                        <div class="menu-item-header">
+                            <h4>Guiso de la casa</h4>
+                            <span class="price">$119</span>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Segunda Columna: Extras y Bebidas -->
+                <div class="menu-col-2">
+                    <!-- Categoría: Extras -->
+                    <div class="menu-category fade-in">
+                        <h3>Extras</h3>
+                        
+                        <div class="menu-item">
+                            <div class="menu-item-header">
+                                <h4>Extra de Huevo</h4>
+                                <span class="price">$35</span>
+                            </div>
+                            <p class="menu-desc">Con jamón, a la mexicana, champiñones, omelet.</p>
+                        </div>
+
+                        <div class="menu-item">
+                            <div class="menu-item-header">
+                                <h4>Extra de Proteína</h4>
+                                <span class="price">$35</span>
+                            </div>
+                            <p class="menu-desc">Pollo o arrachera.</p>
+                        </div>
+
+                        <div class="menu-item">
+                            <div class="menu-item-header">
+                                <h4>Extra de Jamón</h4>
+                                <span class="price">$15</span>
+                            </div>
+                        </div>
+
+                        <div class="menu-item">
+                            <div class="menu-item-header">
+                                <h4>Topping Extra</h4>
+                                <span class="price">$10</span>
+                            </div>
+                            <p class="menu-desc">Chispas de chocolate, almendras, nuez, Nutella, lechera, crema de cacahuate o miel de maple.</p>
+                        </div>
+                    </div>
+
+                    <!-- Categoría: Bebidas -->
+                    <div class="menu-category fade-in" style="margin-top: 2rem;">
+                        <h3>Bebidas Adicionales</h3>
+
+                        <div class="menu-item">
+                            <div class="menu-item-header">
+                                <h4>Chocolate Abuelita</h4>
+                                <span class="price">$45</span>
+                            </div>
+                        </div>
+
+                        <div class="menu-item">
+                            <div class="menu-item-header">
+                                <h4>Café Capuchino</h4>
+                                <span class="price">$45</span>
+                            </div>
+                            <p class="menu-desc">Leche deslactosada o entera.</p>
+                        </div>
+
+                        <div class="menu-item">
+                            <div class="menu-item-header">
+                                <h4>Refrescos</h4>
+                                <span class="price">$25</span>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Sección Galería -->
+    <section id="galeria" class="gallery-section">
+        <h2 class="fade-in">Nuestras Instalaciones</h2>
+        <div class="gallery">
+            <div class="gallery-item fade-in">
+                <img src="documentos/ImgTerracita2.jpeg" alt="Área de mesas bajo techo">
+                <h3>Terraza Techada</h3>
+                <p>Un espacio fresco y acogedor para compartir.</p>
+            </div>
+            <div class="gallery-item fade-in">
+                <img src="documentos/ImgTerracita3.jpeg" alt="Jardín y palmeras">
+                <h3>Área de Jardín</h3>
+                <p>Conecta con la naturaleza mientras desayunas.</p>
+            </div>
+        </div>
+    </section>
+
+    <!-- Pie de página / Contacto -->
+    <footer id="contacto">
+        <div class="footer-content fade-in">
+            <div class="contact-info">
+                <h3>Visítanos</h3>
+                <p>¡Te esperamos para desayunar!</p>
+                <div class="social-icons">
+                    <a href="https://wa.me/TUNUMERODEWHATSAPP" target="_blank" title="WhatsApp"><i class="fab fa-whatsapp"></i></a>
+                    <a href="https://instagram.com/la_.terracitaa" target="_blank" title="Instagram"><i class="fab fa-instagram"></i></a>
+                    <a href="#" target="_blank" title="Facebook"><i class="fab fa-facebook-f"></i></a>
+                </div>
+            </div>
+            <div class="qr-code">
+                <img src="documentos/QrLaterracita.jpeg" alt="Código QR de Instagram" id="qrCodeImg" class="qr-clickable">
+                <p>Haz clic para ampliar</p>
+            </div>
+        </div>
+        <div class="copyright">
+            <p>&copy; 2024 La Terracita Desayunos. Todos los derechos reservados.</p>
+        </div>
+    </footer>
+
+    <!-- Ventana Modal para el Código QR -->
+    <div id="qrModal" class="modal">
+        <span class="close-modal" id="closeModal">&times;</span>
+        <img class="modal-content" src="documentos/QrLaterracita.jpeg" id="imgModal" alt="QR Ampliado">
+    </div>
+
+    <script src="script.js"></script>
+</body>
+</html>
