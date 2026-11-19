@@ -16,14 +16,12 @@
 
 html {
     scroll-behavior: smooth;
-    overflow-x: hidden;
 }
 
 body {
     font-family: 'Poppins', sans-serif;
     background-color: var(--color-fondo);
     color: var(--color-texto);
-    overflow-x: hidden;
 }
 
 /* Navegación */
@@ -34,9 +32,15 @@ body {
     padding: 1rem 5%;
     background-color: var(--color-blanco);
     box-shadow: 0 2px 10px rgba(0,0,0,0.1);
-    position: sticky;
+    position: sticky; /* Cambia a fixed si quieres que el efecto de esconderse funcione bien desde el top 0 */
     top: 0;
     z-index: 100;
+    transition: top 0.3s; /* Transición suave al esconderse/aparecer */
+}
+
+/* Esta clase se agregará por JS cuando el usuario baje */
+.navbar-hidden {
+    top: -100px; /* Sube la barra fuera de la pantalla */
 }
 
 .logo .neon-text {
@@ -74,19 +78,6 @@ body {
     background-color: var(--color-madera);
     margin: 5px;
     transition: all 0.3s ease;
-}
-
-/* Animaciones al hacer scroll (Fade-in Shading) */
-.fade-in {
-    opacity: 0;
-    transform: translateY(40px);
-    transition: opacity 0.8s ease-out, transform 0.8s ease-out;
-    will-change: opacity, transform;
-}
-
-.fade-in.show {
-    opacity: 1;
-    transform: translateY(0);
 }
 
 /* Hero Section */
@@ -162,16 +153,18 @@ body {
     border-radius: 15px;
     box-shadow: 0 10px 20px rgba(0,0,0,0.1);
 }
-
-/* ================================ */
-/* NUEVA SECCIÓN: Menú de Platillos */
-/* ================================ */
+/* --- Sección del Menú --- */
 .menu-section {
     padding: 5rem 10%;
-    background-color: #f6eedf; /* Un tono ligeramente más oscuro para diferenciar la sección */
+    background-color: var(--color-fondo);
 }
 
-.menu-container h2 {
+.menu-container {
+    max-width: 1200px;
+    margin: 0 auto;
+}
+
+.menu-section h2 {
     color: var(--color-madera);
     font-size: 2.5rem;
     text-align: center;
@@ -180,64 +173,74 @@ body {
 
 .menu-nota {
     text-align: center;
-    color: var(--color-verde);
+    color: var(--color-ladrillo);
     font-weight: 600;
     margin-bottom: 3rem;
-    font-size: 1.1rem;
 }
 
 .menu-grid {
     display: grid;
-    grid-template-columns: 1fr 1fr; /* Dos columnas para computadoras */
-    gap: 4rem;
+    grid-template-columns: 1fr 1fr;
+    gap: 3rem;
+}
+
+.menu-category {
+    background: var(--color-blanco);
+    padding: 2rem;
+    border-radius: 15px;
+    box-shadow: 0 5px 15px rgba(0,0,0,0.05);
 }
 
 .menu-category h3 {
+    color: var(--color-verde);
     font-family: 'Pacifico', cursive;
-    color: var(--color-ladrillo);
-    font-size: 2rem;
+    font-size: 1.8rem;
     margin-bottom: 1.5rem;
-    border-bottom: 2px solid var(--color-ladrillo);
-    display: inline-block;
-    padding-right: 15px;
+    border-bottom: 2px dashed rgba(74, 124, 89, 0.3);
+    padding-bottom: 0.5rem;
 }
 
 .menu-item {
     margin-bottom: 1.5rem;
 }
 
+.menu-item:last-child {
+    margin-bottom: 0;
+}
+
 .menu-item-header {
     display: flex;
     justify-content: space-between;
-    align-items: flex-end;
-    border-bottom: 1px dotted #ccc;
-    padding-bottom: 5px;
-    margin-bottom: 5px;
+    align-items: baseline;
+    margin-bottom: 0.3rem;
 }
 
 .menu-item-header h4 {
     color: var(--color-madera);
     font-size: 1.1rem;
-    background-color: #f6eedf;
-    padding-right: 10px;
-    margin-bottom: -5px; /* Para alinear con los puntos */
+    font-weight: 600;
+    margin: 0;
 }
 
 .price {
-    font-weight: 600;
     color: var(--color-ladrillo);
-    background-color: #f6eedf;
-    padding-left: 10px;
-    margin-bottom: -5px;
+    font-weight: 600;
+    font-size: 1.1rem;
 }
 
 .menu-desc {
-    font-size: 0.85rem;
-    color: #555;
-    margin-top: 5px;
+    font-size: 0.9rem;
+    color: #666;
+    margin: 0;
     font-style: italic;
 }
 
+/* Ajustes del Menú para móviles */
+@media screen and (max-width: 900px) {
+    .menu-grid {
+        grid-template-columns: 1fr;
+    }
+}
 /* Galería */
 .gallery-section {
     padding: 5rem 10%;
@@ -275,7 +278,7 @@ body {
     color: var(--color-ladrillo);
 }
 
-/* Footer / Contacto e Iconos Sociales */
+/* Footer / Contacto */
 footer {
     background-color: var(--color-madera);
     color: var(--color-blanco);
@@ -293,14 +296,11 @@ footer {
     margin-bottom: 2rem;
 }
 
-.contact-info h3 {
-    margin-bottom: 0.5rem;
-}
-
+/* --- Iconos Sociales y Mapa --- */
 .social-icons {
     margin-top: 1rem;
     display: flex;
-    gap: 15px;
+    gap: 1rem;
 }
 
 .social-icons a {
@@ -309,87 +309,96 @@ footer {
     align-items: center;
     width: 40px;
     height: 40px;
-    background-color: rgba(255, 255, 255, 0.1);
+    background-color: var(--color-ladrillo);
     color: var(--color-blanco);
     border-radius: 50%;
-    text-decoration: none;
     font-size: 1.2rem;
-    transition: all 0.3s ease;
+    transition: background-color 0.3s ease;
+    text-decoration: none;
 }
 
 .social-icons a:hover {
-    background-color: var(--color-ladrillo);
-    transform: translateY(-3px);
+    background-color: var(--color-verde);
 }
 
-/* Estilos del QR Clickable */
-.qr-clickable {
+.qr-code {
+    text-align: center;
+}
+
+.qr-code img {
     width: 150px;
     border-radius: 10px;
     margin-bottom: 0.5rem;
-    cursor: pointer;
-    transition: transform 0.3s ease, box-shadow 0.3s ease;
-}
-
-.qr-clickable:hover {
-    transform: scale(1.05);
-    box-shadow: 0 5px 15px rgba(0,0,0,0.3);
-}
-
-/* Ventana Modal para el QR */
-.modal {
-    display: none; 
-    position: fixed;
-    z-index: 1000;
-    left: 0;
-    top: 0;
-    width: 100%;
-    height: 100%;
-    background-color: rgba(0,0,0,0.85); 
-    backdrop-filter: blur(5px);
-    justify-content: center;
-    align-items: center;
-    opacity: 0;
-    transition: opacity 0.3s ease;
-}
-
-.modal.show-modal {
-    display: flex;
-    opacity: 1;
-}
-
-.modal-content {
-    max-width: 80%;
-    max-height: 80%;
-    border-radius: 15px;
-    box-shadow: 0 10px 25px rgba(0,0,0,0.5);
-    transform: scale(0.7);
-    transition: transform 0.3s ease;
-}
-
-.modal.show-modal .modal-content {
-    transform: scale(1);
-}
-
-.close-modal {
-    position: absolute;
-    top: 20px;
-    right: 40px;
-    color: #fff;
-    font-size: 40px;
-    font-weight: bold;
-    cursor: pointer;
-    transition: color 0.3s ease;
-}
-
-.close-modal:hover {
-    color: var(--color-ladrillo);
+    cursor: pointer; /* Indica que la imagen es clickeable */
 }
 
 .copyright {
     text-align: center;
     font-size: 0.9rem;
     color: #cccccc;
+}
+
+/* Ventana Modal para QR */
+.modal {
+    display: none; 
+    position: fixed; 
+    z-index: 1000; 
+    left: 0;
+    top: 0;
+    width: 100%; 
+    height: 100%; 
+    overflow: auto; 
+    background-color: rgba(0,0,0,0.8); 
+}
+
+.show-modal {
+    display: flex !important;
+    justify-content: center;
+    align-items: center;
+}
+
+.modal-content {
+    margin: auto;
+    display: block;
+    width: 80%;
+    max-width: 500px;
+    border-radius: 15px;
+    animation-name: zoom;
+    animation-duration: 0.6s;
+}
+
+@keyframes zoom {
+    from {transform:scale(0)} 
+    to {transform:scale(1)}
+}
+
+.close-modal {
+    position: absolute;
+    top: 15px;
+    right: 35px;
+    color: #f1f1f1;
+    font-size: 40px;
+    font-weight: bold;
+    transition: 0.3s;
+}
+
+.close-modal:hover,
+.close-modal:focus {
+    color: #bbb;
+    text-decoration: none;
+    cursor: pointer;
+}
+
+/* Efectos Fade In (Animaciones) */
+.fade-in {
+    opacity: 0;
+    transform: translateY(20px);
+    transition: opacity 0.6s ease-out, transform 0.6s ease-out;
+}
+
+.fade-in.show {
+    opacity: 1;
+    transform: translateY(0);
 }
 
 /* Responsividad (Móviles) */
@@ -421,12 +430,6 @@ footer {
     .about {
         flex-direction: column;
     }
-    
-    /* El menú pasa de dos columnas a una sola columna en móviles */
-    .menu-grid {
-        grid-template-columns: 1fr;
-        gap: 2rem;
-    }
 
     .hero h1 {
         font-size: 2.5rem;
@@ -436,16 +439,13 @@ footer {
         flex-direction: column;
         text-align: center;
     }
-
-    .social-icons {
-        justify-content: center;
-    }
 }
 
 .nav-active {
     transform: translateX(0%);
 }
 
+/* Animación del menú */
 @keyframes navLinkFade {
     from { opacity: 0; transform: translateX(50px); }
     to { opacity: 1; transform: translateX(0); }

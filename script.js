@@ -1,4 +1,23 @@
-// 1. Menú de Navegación Móvil
+// 1. Efecto de ocultar Navbar al hacer scroll
+const navbarScrollEffect = () => {
+    let prevScrollpos = window.pageYOffset;
+    const navbar = document.getElementById("navbar");
+
+    window.onscroll = function() {
+        let currentScrollPos = window.pageYOffset;
+        
+        // Si subimos (prev > current) o estamos en la parte superior, mostramos el menú
+        if (prevScrollpos > currentScrollPos || currentScrollPos < 50) {
+            navbar.classList.remove("navbar-hidden");
+        } else {
+            // Si bajamos, ocultamos el menú
+            navbar.classList.add("navbar-hidden");
+        }
+        prevScrollpos = currentScrollPos;
+    }
+}
+
+// 2. Menú de Navegación Móvil
 const navSlide = () => {
     const burger = document.getElementById('burger');
     const nav = document.getElementById('nav-links');
@@ -19,13 +38,13 @@ const navSlide = () => {
     });
 }
 
-// 2. Animaciones al hacer scroll (Fade In)
+// 3. Animaciones al hacer scroll (Fade In)
 const scrollAnimations = () => {
     const faders = document.querySelectorAll('.fade-in');
     
     const appearOptions = {
-        threshold: 0.15, // El elemento aparece cuando el 15% es visible
-        rootMargin: "0px 0px -50px 0px" // Margen para que anime un poco antes del borde inferior
+        threshold: 0.15,
+        rootMargin: "0px 0px -50px 0px"
     };
 
     const appearOnScroll = new IntersectionObserver(function(entries, appearOnScroll) {
@@ -34,7 +53,7 @@ const scrollAnimations = () => {
                 return;
             } else {
                 entry.target.classList.add('show');
-                appearOnScroll.unobserve(entry.target); // Deja de observar una vez que ya apareció
+                appearOnScroll.unobserve(entry.target);
             }
         });
     }, appearOptions);
@@ -44,33 +63,48 @@ const scrollAnimations = () => {
     });
 }
 
-// 3. Lógica del Modal del Código QR
+// 4. Lógica del Modal del Código QR
 const qrModalFunctionality = () => {
     const qrImg = document.getElementById('qrCodeImg');
     const modal = document.getElementById('qrModal');
     const closeModal = document.getElementById('closeModal');
 
-    // Abrir Modal
-    qrImg.addEventListener('click', () => {
-        modal.classList.add('show-modal');
-    });
+    if(qrImg && modal && closeModal) {
+        // Abrir Modal
+        qrImg.addEventListener('click', () => {
+            modal.classList.add('show-modal');
+        });
 
-    // Cerrar Modal con el botón X
-    closeModal.addEventListener('click', () => {
-        modal.classList.remove('show-modal');
-    });
-
-    // Cerrar Modal haciendo clic fuera de la imagen
-    window.addEventListener('click', (e) => {
-        if (e.target === modal) {
+        // Cerrar Modal con el botón X
+        closeModal.addEventListener('click', () => {
             modal.classList.remove('show-modal');
-        }
-    });
+        });
+
+        // Cerrar Modal haciendo clic fuera de la imagen
+        window.addEventListener('click', (e) => {
+            if (e.target === modal) {
+                modal.classList.remove('show-modal');
+            }
+        });
+    }
+}
+
+// 5. Botón de Facebook en construcción
+const facebookBoton = () => {
+    const fbBtn = document.getElementById('btn-facebook');
+    if (fbBtn) {
+        fbBtn.addEventListener('click', (e) => {
+            e.preventDefault(); // Evita que la página intente cargar otro enlace
+            alert("¡Próximamente! Nuestra página de Facebook estará lista muy pronto. Por ahora síguenos en Instagram.");
+        });
+    }
 }
 
 // Ejecutar funciones al cargar la página
 document.addEventListener('DOMContentLoaded', () => {
+    navbarScrollEffect();
     navSlide();
     scrollAnimations();
     qrModalFunctionality();
+    facebookBoton();
 });
